@@ -1,1 +1,99 @@
-hello world
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Cryptopinions</title>
+  <link rel="stylesheet" href="/app.css">
+  <script src="/vendor.js"></script>
+  <script src="/app.js"></script>
+  <script src="/customDecoder.js"></script>
+  <script src="/web3Interaction.js"></script>
+  <script src="/jquery.textfill.js"></script>
+  <script src="/util.js"></script>
+  <script src="/particles.min.js"></script>
+  <script>require('initialize');</script>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <!--<script>require('index');</script>-->
+</head>
+<body>
+<div id="particles-js"></div>
+    <div id="titlebar" ></div>
+    <div id="titlebarlinks">
+        <a href="/" class="titlebarlink">
+            <img src="textlogo.png" width=450 style="margin:20px;" >
+        </a>
+        <a href="#marketplace" id="marketplacelink" class="titlebarlink">
+            <div class="titlebarelement">
+                Marketplace
+            </div>
+        </a>
+        <a href="#newopinion" id="newopinionlink" class="titlebarlink">
+            <div class="titlebarelement">
+                Register Opinion
+            </div>
+        </a>
+        <a href="#myopinions" id="myopinionlink">
+            <div class="titlebarelement">
+                My Opinions
+            </div>
+        </a>
+        <a href="https://etherscan.io/address/">
+            <div class="titlebarelement">
+                Contract
+            </div>
+        </a>
+        <a href="#about" id="aboutlink">
+            <div class="titlebarelement">
+                About
+            </div>
+        </a>
+                <div class="titletext">
+            Earn Ethereum for your opinions!
+        </div>
+    </div>
+  <div class="brunch">
+    <body>
+    <!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <!--<span class="close">&times;</span>-->
+    <div id="modal-internal"></div>
+  </div>
+
+</div>
+    <div id="about">
+        <div class='card-header'>
+            What is Cryptopinions?
+        </div>
+        <div class='aboutcontents'>
+            Cryptopinions is a new social media twist on cryptocollectibles. Register and own unique opinions on the Ethereum blockchain, or sponsor existing opinions! <br><br>
+            
+            To view and interact with Cryptopinions, you must first have <a href="https://metamask.io/">Metamask</a> installed.
+            <br><br>
+            <h3>Own</h3>Each opinion is a full fledged ERC-721 Token, and unlike similar games, is permanently yours as long as you hold it. Once you have registered an opinion, you own it; no valid duplicate may be created, and you may sell or trade it as you see fit on a variety of platforms.<br>As holder of the opinion token, 10% of every sponsorship for it goes to you, meaning substantial dividends for popular opinions. Cryptopinions takes no fees from sponsorships, all sponsorship fees go to the owner.
+            <br><br>
+            <h3>Sponsor</h3>Sponsoring opinions lets you show support for an opinion by paying a specific and progressively increasing sum of Ethereum. 90% goes to the last sponsor, 10% to the opinion owner. When the next person sponsors the same opinion, you get your Eth back and then some. When an opinion is sponsored, it becomes marked with a green check and a sponsor selected word of support, and becomes listed more prominently (sorted by price to sponsor).
+            <br><br>
+            <h3>Anti-Sponsor</h3>Don't agree? Anti-Sponsoring works the same as sponsoring, but your Eth goes 90% to the previous antisponsor and 10% to Cryptopinions instead of to the sponsor and the opinion owner.<br>Just like with Sponsoring, the price increases each time, meaning that an opinion becomes more expensive to sponsor for every antisponsor and vice-versa. This means that by antisponsoring, you not only show your distaste for an opinion with a red check and negative comment, but also remove potential dividends from the opinion holder.
+        </div>
+    </div>
+    <div style="visibility:hidden;">f</div>
+    <div id="caption" id='caption' class='caption'>
+        gfdgdg
+    </div>
+    <div id="content" class="center-screen">
+         
+        </div>
+    <script>
+        var main=require('index')
+        main.main(document)
+        //var $ = require('jquery');
+        //console.log('2Tasty Brunch, just trying to use jQuery!', $('body'));
+    </script>
+
+    </body>
+  </div>
+  
+</body>

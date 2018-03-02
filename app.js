@@ -546,7 +546,7 @@ exports.main = function main(document) {
         var itemsArr = Array.prototype.slice.call(document.getElementById('content').children[0].children);
         //console.log('sortopinions '+itemsArr.length)
         var indexArr = [];
-        if (window.location.href.indexOf('/opinion') > -1) {
+        if (window.location.href.indexOf('#opinion') > -1) {
             return;
         }
         var itemsByIndex = {};
@@ -579,19 +579,23 @@ exports.main = function main(document) {
         //clear duplicates
         opinionTextSet = new Set();
         var numOpinions = indexArr.length;
-        for (var i = 0; i < numOpinions; i++) {
-            var itemtext = opinionDataByIndex[i]['text'];
-            if (opinionDataByIndex[i]['comment'] == 'Unclaimed') {
-                continue;
+        if (opinionDataByIndex.length >= numOpinions) {
+            for (var i = 0; i < numOpinions; i++) {
+                var itemtext = opinionDataByIndex[i]['text'];
+                if (opinionDataByIndex[i]['comment'] == 'Unclaimed') {
+                    continue;
+                }
+                //console.log('clearing duplicate text check: '+'^'+i)
+                if (opinionTextSet.has(itemtext)) {
+                    //console.log('clearing duplicate has text')
+                    removeFromArray(indexArr, i + "");
+                } else {
+                    //console.log('clearing duplicate no text')
+                    opinionTextSet.add(itemtext);
+                }
             }
-            //console.log('clearing duplicate text check: '+'^'+i)
-            if (opinionTextSet.has(itemtext)) {
-                //console.log('clearing duplicate has text')
-                removeFromArray(indexArr, i + "");
-            } else {
-                //console.log('clearing duplicate no text')
-                opinionTextSet.add(itemtext);
-            }
+        } else {
+            console.log('opiniondatabyindex was not populated when sortopinions ran');
         }
 
         for (i = 0; i < indexArr.length; ++i) {
@@ -603,6 +607,7 @@ exports.main = function main(document) {
         content.appendChild(newdiv);
     }
     function refreshInfo() {
+        console.log('refreshinfo');
         sortOpinions();
         var allinfo = document.getElementsByClassName('info');
         Array.prototype.forEach.call(allinfo, function (info) {
@@ -718,6 +723,7 @@ exports.main = function main(document) {
         caption.style.display = 'block';
     }
     function clearAll() {
+        console.log('clearall');
         var caption = document.getElementById('caption');
         caption.style.display = 'none';
         var content = document.getElementById('content');
@@ -725,6 +731,7 @@ exports.main = function main(document) {
     }
 
     function changeState() {
+        console.log('changing state');
         clearAll();
         setTimeout(init, 100);
     }

@@ -552,9 +552,11 @@ exports.main = function main(document) {
         var itemsByIndex = {};
         for (var i = 0; i < itemsArr.length; i++) {
             var info = itemsArr[i].getElementsByClassName('info')[0];
-            var index = info.getAttribute("index");
-            itemsByIndex[index] = itemsArr[i];
-            indexArr.push(index);
+            if (typeof info != "undefined") {
+                var index = info.getAttribute("index");
+                itemsByIndex[index] = itemsArr[i];
+                indexArr.push(index);
+            }
         }
         //console.log('sorting indexes '+indexArr)
 
@@ -659,9 +661,11 @@ exports.main = function main(document) {
                     console.log('This is mainnet');
                     break;
                 case "2":
+                    displayModalMessage('Please connect to Ethereum Mainnet using Metamask');
                     console.log('This is the deprecated Morden test network.');
                     break;
                 case "3":
+                    displayModalMessage('Please connect to Ethereum Mainnet using Metamask');
                     console.log('This is the ropsten test network.');
                     break;
                 default:

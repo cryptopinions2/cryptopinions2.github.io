@@ -741,7 +741,7 @@ commentMapDislike={
 108:'No',
 109:'Bad'}
 commentMap=Object.assign({0:'Unclaimed'},commentMapLike,commentMapDislike)
-contractAddress="0x86dcff469af2fc46b6323005ebbc373ed333493f"//"0x393b5fd2b993eaf419fbadab630bc9bd3d5792e9"//"0x5668f88389d762ffe9a63263f7579dc33bd6ab7b"//"0x3afabc0656632d6ca39e886c6214b2d970b099b9";//"0x6ec00fdb2a1250ed6c35717b85f51cc7a1016f4a";//"0x011e673f5696750a932859ecf2aad4b19af792bf"//"0xac040bab5815f27df1d08613a8a1144803e94dcc";
+contractAddress="0x86dcff469af2fc46b6323005ebbc373ed333493f"//"0x67d7399a6e1a79f4df1cb3318af71d188aaeaee6"//"0x4aa74d9773a8b2892b083c015ab1e907fa701c78"//"0x5668f88389d762ffe9a63263f7579dc33bd6ab7b"//"0x3afabc0656632d6ca39e886c6214b2d970b099b9";//"0x6ec00fdb2a1250ed6c35717b85f51cc7a1016f4a";//"0x011e673f5696750a932859ecf2aad4b19af792bf"//"0xac040bab5815f27df1d08613a8a1144803e94dcc";
 //var accountAddress=null;
 //function trimString(str){
  //   return str.replace(/[|&;$%@"<>()+,]/g, "");
@@ -785,7 +785,7 @@ function getOpinion(id,callback){
         if(!error){
             //console.log(result)
             console.log('getopinion success')
-            results=splitHex(result,[64,64,64,64,64,64,64,1000]);
+            results=splitHex(result,[64,64,64,64,64,64,64,64,1000]);
             //testResults(result,[64,64,8,1000])
             var ether=web3.toDecimal("0x"+results[0])
             var address="0x"+results[1].substring(24);
@@ -793,8 +793,8 @@ function getOpinion(id,callback){
             var address3="0x"+results[3].substring(24);
             var totalsponsored="0x"+results[4].substring(24);
             var totalantisponsored="0x"+results[5].substring(24);
-            
-            var text=web3.toAscii("0x"+results[7])
+            var timestamp=web3.toDecimal("0x"+results[8])
+            var text=web3.toAscii("0x"+results[8])
             //console.log('opinion: '+text+'^')
             var commentNum=web3.toDecimal("0x"+results[6])
             //console.log('web3interaction comment:'+commentNum+" "+id+" "+results[6])
@@ -804,7 +804,7 @@ function getOpinion(id,callback){
             text=text.replace('`','')
             iscorrect=commentNum<100;
             //console.log('w3i iscorrect'+iscorrect)
-            callback(ether,address,address2,address3,totalsponsored,totalantisponsored,text,id,comment,iscorrect);
+            callback(ether,address,address2,address3,totalsponsored,totalantisponsored,text,id,comment,iscorrect,timestamp);
             //console.log(ether,address,text)
         }
         else{

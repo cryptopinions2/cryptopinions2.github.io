@@ -269,6 +269,18 @@ button {
   background: #dfe3ee;
   border: none;
 }
+button.small {
+    cursor:pointer;
+    font-weight: bold;
+    color: #ffffff;
+  border-radius: 10px;
+  margin-left: 10px;
+  margin-top:10px;
+  line-height: 20px;
+  padding: 0 10px;
+  background: #35D12B;
+  border: none;
+}
 button:hover {
   background: 	#f7f7f7;
 }

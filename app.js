@@ -151,8 +151,10 @@ require.register("index.js", function(exports, require, module) {
 'use strict';
 
 var MAX_TEXT_LENGTH = 150;
+var MAX_WORD_LENGTH = 40;
 var opinionTextSet = new Set();
 var opinionDataByIndex = {};
+var tempDisableLinks = false;
 console.log('test');
 //var provider = new Web3.providers.HttpProvider("http://localhost:8545");//
 //var contract = require("truffle-contract");
@@ -260,6 +262,8 @@ exports.main = function main(document) {
                     var maintext = text;
                     var info = null;
                     var icon = getIcon(comment, isCorrect);
+                    //var buttondiv=document.createElement('div')
+                    //buttondiv.classList.add('buttoncontainer')
                     if (comment == "Unclaimed") {
                         //indicates unclaimed
                         adiv = createBox(j, "insidebox", "smallinfounclaimed", icon, comment);
@@ -268,18 +272,42 @@ exports.main = function main(document) {
                     } else {
                         adiv = createBox(j, "insidebox", "smallinfo", icon, comment);
                         info = getInfoShort(ether, address);
+                        var sponsorbutton = document.createElement('button');
+                        sponsorbutton.textContent = 'Sponsor';
+                        sponsorbutton.classList.add('small');
+                        adiv.appendChild(sponsorbutton);
+                        sponsorbutton.addEventListener("click", function () {
+                            console.log('button click 1');
+                            tempDisableLinks = true;
+                            sponsorOpinion(web3.eth.accounts[0], j, ether, true, 1, function () {
+                                //callback
+                                removeModal();
+                                displayTransactionMessage();
+                            });
+                            //makeSponsorFunction(j,ether)
+                        });
                     }
+
+                    //sponsorbutton.classList.add('
+                    //fillButtonContainer(buttondiv,j,ether,address,saddress,asaddress,comment)
+
                     adiv.classList.add("box");
                     var link = document.createElement("a");
                     link.setAttribute("href", "#opinion?i=" + j);
                     link.appendChild(adiv);
-                    link.onclick = changeState;
+                    link.onclick = function () {
+                        console.log('link click');
+                        if (!tempDisableLinks) {
+                            changeState();
+                        }
+                        tempDisableLinks = false;
+                    };
                     element.appendChild(link); //adiv)
                     console.log('i is what now:' + j);
                     //console.log('should be modifying:'+element.children[j].children[0].textContent)
                     adiv.getElementsByClassName("insidebox" + j)[0].children[0].textContent = maintext;
                     console.log(ether, address, text);
-                    $('.insidebox' + j).textfill({ innertag: 'div', debug: false });
+                    $('.insidebox' + j).textfill({ innertag: 'span', debug: false });
                     adiv.getElementsByClassName("info" + j)[0].innerHTML = info;
                     count++;
                     if (count == totalSupply) {
@@ -447,8 +475,12 @@ exports.main = function main(document) {
             });
         });
     }
-    function makeSponsorButtons(adiv, index, ether) {
-        createButton("check.svg", "Sponsor", adiv, function () {
+    function makeSmallSponsorButton(adiv, index, ether) {}
+    function makeSponsorButton(adiv, index, ether) {
+        createButton("check.svg", "Sponsor", adiv, makeSponsorFunction(index, ether));
+    }
+    function makeSponsorFunction(index, ether) {
+        return function () {
             console.log("sponsoring");
             modal.style.display = "block";
 
@@ -470,7 +502,9 @@ exports.main = function main(document) {
                 }); //
             });
             //sponsorOpinion(web3.eth.accounts[0],index,ether,true,1);
-        });
+        };
+    }
+    function makeAntisponsorButton(adiv, index, ether) {
         createButton("redx.svg", "Anti-Sponsor", adiv, function () {
             console.log("antisponsoring");
             modal.style.display = "block";
@@ -494,6 +528,10 @@ exports.main = function main(document) {
             });
             //sponsorOpinion(web3.eth.accounts[0],index,ether,false,101);//
         });
+    }
+    function makeSponsorButtons(adiv, index, ether) {
+        makeSponsorButton(adiv, index, ether);
+        makeAntisponsorButton(adiv, index, ether);
     }
     function createSelectFromDict(dict) {
         var select = document.createElement("select");
@@ -617,7 +655,7 @@ exports.main = function main(document) {
                 if (typeof textbox != "undefined" && comment != 'Unclaimed') {
                     textbox.children[0].textContent = textSanityCheck(text);
                 }
-                $('.insidebox' + index).textfill({ innertag: 'div', debug: false });
+                $('.insidebox' + index).textfill({ innertag: 'span', debug: false });
                 if (comment != "Unclaimed") {
                     var textboxandlimit = document.getElementsByClassName('textboxandlimit')[0];
                     if (typeof textboxandlimit != "undefined") {
@@ -650,10 +688,20 @@ exports.main = function main(document) {
         return parseFloat(parseFloat(ethstr).toFixed(5));
     }
     function textSanityCheck(text) {
+
         text = text.replace(/[^\x00-\x7F]/g, ""); //only ascii
         var newtext = text;
         if (text.length > MAX_TEXT_LENGTH) {
             newtext = text.substring(0, MAX_TEXT_LENGTH) + "...";
+        }
+        var words = newtext.split(" ");
+        newtext = "";
+        for (var i = 0; i < words.length; i++) {
+            var word = words[i];
+            if (word.length > MAX_WORD_LENGTH) {
+                word = word.substring(0, MAX_WORD_LENGTH) + "...";
+            }
+            newtext += word + " ";
         }
         return newtext;
     }

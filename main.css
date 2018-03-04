@@ -1,0 +1,311 @@
+a{
+    text-decoration: none;
+}
+textarea {
+    background-color: transparent;
+    margin-left:40px;
+    resize: none;
+}
+body {
+    font-family: "Segoe UI";
+    background-color: #E7ECF2;
+    margin:0;
+    padding:0;
+}
+#content {
+    width:auto;
+    
+    margin-left:auto;
+    margin-right:auto;
+    text-align:center;
+    padding-top:220px;
+}
+#particles-js canvas{
+    position: absolute;
+    width: 99%;
+    height: 160px;
+    z-index: -1;
+}
+#titlebar{
+    z-index:-2;
+    position:absolute;
+    white-space: nowrap;
+    height: 160px;
+    width:99%;
+    border-style: solid;
+    border-color: #6d84b4;
+    background-color: #6d84b4;
+}
+#titlebarlinks{
+    position:absolute;
+    white-space: nowrap;
+    height: 160px;
+    width:99%;
+}
+.titlebarlink{
+    z-index: 999;
+    white-space: nowrap;
+}
+.titlebarelement{
+    display:inline-block;
+    position:initial;
+    white-space: nowrap;
+    font-weight:bold;
+    font-size:20px;
+    
+    vertical-align:top;
+    margin-top:100px;
+    margin-left:30px;
+    color:white;
+}
+.h3, h3 {
+    font-size: 1.75rem;
+}
+.caption{
+    display: none;
+    font-size: 1.75rem;
+    font-weight:bold;
+    margin:30px;
+    position:initial;
+    margin-top:170px;
+    margin-bottom:-130px;
+    padding: .75rem 1.25rem;
+    color:#474747  ;
+    background-color: rgba(0,0,0,.03);
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
+.card-header {
+    font-size: 1.75rem;
+    padding: .75rem 1.25rem;
+    margin-bottom: 0;
+    color:#474747  ;
+    background-color: rgba(0,0,0,.03);
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
+.largebox{
+    border-radius: 5px;
+    border: 2px solid #afbdd4;
+    text-align:left;
+    height: 650px;
+    width: 550px;
+    padding-bottom: 0%;
+    margin:auto;
+    background-color:#FFFFFF;
+    color:black;
+    text-decoration: none; 
+}
+.box {
+    margin:10px;
+    border-radius: 5px;
+    border: 2px solid #afbdd4;
+    text-align:left;
+    float: left;
+    position:relative;
+    height: 300px;
+    width: 200px;
+    padding-bottom: 0%;
+    background-color:#FFFFFF;
+    color:black;
+}
+.center-screen {
+  text-align: center;
+  max-width: 1150px;
+  margin:auto;
+}
+.insidebox{
+    font-weight:bold;
+    text-align:left;
+    margin:12px;
+    width:150px;
+    height:150px;
+}
+.insideboxlarge{
+    font-weight:bold;
+    text-align:center;
+    width:450px;
+    height:200px;
+    margin: 40px;
+}
+
+
+
+.titletext{
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    margin-left:40px;
+    margin-top:-10px
+}
+.bartext{
+    font-weight:bold;
+    font-size:25px;
+    margin-left:5px;
+    color:#FFFFFF;
+}
+.smallinfo{
+    font-weight:bold;
+    font-size:12px;
+    margin-left:20px;
+    color:#566573  ;
+}
+.smallinfounclaimed{
+    font-weight:bold;
+    font-size:12px;
+    margin-left:20px;
+    color:#566573  ;
+}
+.infomodal{
+    margin-bottom:10px;
+    font-weight:bold;
+    font-size:20px;
+    color:#566573  ;
+}
+.descriptiveText{
+    font-size:12px;
+    color:#000000
+}
+.largeinfo{
+    margin-top:40px;
+    margin-bottom:20px;
+    font-weight:bold;
+    font-size:16px;
+    margin-left:40px;
+    color:#566573  ;
+}
+.largeinfounclaimed{
+    margin-top:10px;
+    margin-bottom:15px;
+    font-weight:bold;
+    font-size:20px;
+    margin-left:40px;
+    color:#566573  ;
+}
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    margin-top:200px;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 400px;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+.correctbar{
+    border-radius: 3px;
+    height: 35px;
+    background-color: #3b5998;
+}
+.aboutcontents{
+    margin:20px;
+    line-height: 150%;
+}
+#about{
+    display: none; /* Hidden by default */
+    border-radius: 5px;
+    font-size:20px;
+    position:absolute;
+    border: 2px solid #afbdd4;
+    text-align:left;
+    width: 800px;
+    padding-bottom: 0%;
+    margin-left:50px;
+    margin-right:auto;
+    margin-top:220px;
+
+    background-color:#FFFFFF;
+    color:black;
+    text-decoration: none; 
+}
+#charlimit{
+    margin-top:0px;
+        font-weight:bold;
+    font-size:12px;
+    margin-left:42px;
+    color:#566573  ;
+}
+
+#incorrectbar{
+    border-radius: 3px;
+    height: 35px;
+    background-color: #CB4335  ;
+}
+button {
+    cursor:pointer;
+    font-weight: bold;
+    color: #8A8A8A;
+  border-radius: 10px;
+  margin-left: 40px;
+  margin-top:20px;
+  line-height: 60px;
+  padding: 0 40px;
+  background: #dfe3ee;
+  border: none;
+}
+button.small {
+    cursor:pointer;
+    font-weight: bold;
+    color: #ffffff;
+  border-radius: 10px;
+  margin-left: 10px;
+  margin-top:10px;
+  line-height: 20px;
+  padding: 0 10px;
+  background: #35D12B;
+  border: none;
+}
+button:hover {
+  background: 	#f7f7f7;
+}
+button:focus {outline:0;}
+img.icon{
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    margin-top:11px;
+    vertical-align:top;
+}
+img.iconbar{
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+    margin-top:1px;
+    vertical-align:top;
+}
+button2 {
+  margin-left: 20px;
+  line-height: 60px;
+  padding: 0 40px;
+  background: lightgreen;
+  border: none;
+}
+button2:hover {
+  background: #D5F5E3  ;
+}

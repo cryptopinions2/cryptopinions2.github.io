@@ -279,11 +279,16 @@ exports.main = function main(document) {
                         sponsorbutton.addEventListener("click", function () {
                             console.log('button click 1');
                             tempDisableLinks = true;
-                            sponsorOpinion(web3.eth.accounts[0], j, ether, true, 1, function () {
-                                //callback
-                                removeModal();
-                                displayTransactionMessage();
-                            });
+                            var addressInvolvement = isAddressInvolved(address, saddress, asaddress);
+                            if (addressInvolvement == "") {
+                                sponsorOpinion(web3.eth.accounts[0], j, ether, true, 1, function () {
+                                    //callback
+                                    removeModal();
+                                    displayTransactionMessage();
+                                });
+                            } else {
+                                displayModalMessage("Cannot sponsor, already " + addressInvolvement);
+                            }
                             //makeSponsorFunction(j,ether)
                         });
                     }
@@ -554,7 +559,7 @@ exports.main = function main(document) {
         element.appendChild(adiv)
     }*/
     function getInfoShort(price, owner) {
-        return "Owner:<br>" + owner.substring(0, 15) + "...<br><br>Price to sponsor: " + weiToDisplay(price) + " Eth";
+        return "Owner:<br>" + owner.substring(0, 15) + "...<br><br>Sponsor price: " + weiToDisplay(price) + " Eth";
     }
     function getInfoUnclaimed(price) {
         return "Cost: " + weiToDisplay(price) + " Eth";
